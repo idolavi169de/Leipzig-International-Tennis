@@ -255,15 +255,58 @@
       }
     }
 
+    /* ══ GALLERY ══ */
+    .gallery-section { padding: 88px 32px; background: var(--sand-light); }
+    .gallery-container { max-width: 1000px; margin: 0 auto; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+    .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .gallery-item-1, .gallery-item-2 { grid-column: span 1; aspect-ratio: 16/9; }
+    .gallery-item-3, .gallery-item-4 { grid-column: span 1; aspect-ratio: 9/16; }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .gallery-item-1, .gallery-item-2, .gallery-item-3, .gallery-item-4 {
+        grid-column: span 1;
+        aspect-ratio: 1;
+      }
+    }
+
     /* ══ ANIMATIONS ══ */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
 
   <!-- TOP BAR -->
   <div class="top-bar">
-    🎾 FREE TRIAL SESSION
+    🎾 5€ TRIAL SESSION
   </div>
 
   <!-- ══ HERO ══ -->
@@ -273,16 +316,15 @@
 
       <div class="hero-alerts">
         <div class="hero-alert scarcity">🎾 Limited spots available</div>
-        <div class="hero-alert urgency">⏰ Early bird price until <strong>June 1st</strong></div>
       </div>
 
       <p class="hero-sub">
-        Leipzig's only English-speaking tennis community — try your first session completely free. No commitment. Equipment included. Real friendships guaranteed.
+        Leipzig's only English-speaking tennis community — try your first session for just 5€. No commitment. Equipment included. Real friendships guaranteed.
       </p>
 
       <div class="hero-cta-group">
-        <a href="https://wa.me/4915223182062?text=Hey!%20:)%20I%27d%20like%20to%20apply%20for%20a%20free%20group%20trial%20lesson" class="btn-primary">GET YOUR FREE LESSON</a>
-        <span class="hero-note"><span>100% free.</span> No credit card. No strings attached. Just come play.</span>
+        <a href="https://wa.me/4915223182062?text=Hey!%20:)%20I%27d%20like%20to%20book%20the%205%E2%82%AC%20trial%20lesson" class="btn-primary">GET YOUR 5€ LESSON</a>
+        <span class="hero-note"><span>Only 5€.</span> No credit card needed. No strings attached. Just come play.</span>
       </div>
     </div>
   </section>
@@ -371,6 +413,31 @@
     </div>
   </section>
 
+  <!-- ══ PHOTO GALLERY ══ -->
+  <section class="gallery-section">
+    <div class="gallery-container">
+      <div class="section-label">Our Community</div>
+      <h2 class="section-title">A Peek Inside</h2>
+      <p class="section-sub">Real players, real friendships, real fun.</p>
+      <div class="section-divider"></div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-item-1">
+          <img src="./picnic_1.jpg" alt="Group event at our community picnic" />
+        </div>
+        <div class="gallery-item gallery-item-2">
+          <img src="./picnic_2.jpg" alt="Picnic setup with refreshments and equipment" />
+        </div>
+        <div class="gallery-item gallery-item-3">
+          <img src="./picnic_3.jpg" alt="Community vibes and friendships" />
+        </div>
+        <div class="gallery-item gallery-item-4">
+          <img src="./picnic_4.jpg" alt="One-on-one coaching session" />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TOTAL VALUE BOX -->
   <div class="total-box">
     <div class="total-left">
@@ -379,11 +446,8 @@
     </div>
     <div class="total-right">
       <div class="total-was">Worth €290+/month</div>
-      <div style="display: flex; align-items: center; gap: 12px; justify-content: flex-end; margin-bottom: 4px;">
-        <div class="total-price" style="text-decoration: line-through; font-size: 2.2rem; opacity: 0.6;">€120</div>
-        <div class="total-price">€100</div>
-      </div>
-      <div class="total-period">Early bird discount until June 1st</div>
+      <div class="total-price">€120</div>
+      <div class="total-period">per month</div>
     </div>
   </div>
 
@@ -427,7 +491,7 @@
       <div class="risk-icon">🛡️</div>
       <h3>Try It First. Decide After.</h3>
       <p>
-        Your first trial session is <strong>50% off</strong>. Come, play, meet the group, feel the vibe.
+        Your first trial session is just <strong>5€</strong>. Come, play, meet the group, feel the vibe.
         If it's not for you — you owe us nothing. No awkward conversations, no locked-in contracts.
         We only want members who genuinely love being there.
       </p>
@@ -437,11 +501,11 @@
   <!-- ══ FINAL CTA ══ -->
   <section class="final-cta">
     <h2>Ready to Find<br><em>Your Group?</em></h2>
-    <p>Get your FREE trial session. No credit card. No commitment. Just come, play, and see if it's right for you. Message Ido and claim your spot.</p>
-    <a href="https://wa.me/4915223182062?text=Hey!%20:)%20I%27d%20like%20to%20apply%20for%20a%20free%20group%20trial%20lesson" class="btn-big">Get Your FREE Trial →</a>
+    <p>Get your 5€ trial session. No credit card. No commitment. Just come, play, and see if it's right for you. Message Ido and claim your spot.</p>
+    <a href="https://wa.me/4915223182062?text=Hey!%20:)%20I%27d%20like%20to%20book%20the%205%E2%82%AC%20trial%20lesson" class="btn-big">Get Your 5€ Trial →</a>
     <br/>
     <span class="final-reassurance">
-      <span>⚡ Spots fill fast.</span> Don't miss out — book your free trial now.
+      <span>⚡ Spots fill fast.</span> Don't miss out — book your 5€ trial now.
     </span>
   </section>
 
