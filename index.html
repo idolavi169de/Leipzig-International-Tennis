@@ -2,6 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2044538419493701');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2044538419493701&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tennis Kickstart — Learn Tennis in 6 Hours | Leipzig International Tennis</title>
 <meta name="description" content="Tennis Kickstart in Leipzig: become a tennis player in 6 hours. A beginner course of 4 × 90-minute sessions over 4 days in English — court, equipment, and a practice plan included." />
@@ -27,13 +44,65 @@
 </header>
 
 <section class="hero" style="min-height:66vh;background:linear-gradient(180deg,rgba(27,18,9,.5),rgba(27,18,9,.78)),url('https://images.pexels.com/photos/32289800/pexels-photo-32289800.jpeg?auto=compress&cs=tinysrgb&w=1920');background-size:cover;background-position:center">
-  <div class="hero-inner" style="padding:90px 22px 70px">
+  <div class="hero-inner" style="padding:90px 22px 40px">
     <span class="badge">Learn in English · Expert coaching · Start playing</span>
     <h1>Become a Tennis Player<span class="script">in 6 Hours.</span></h1>
     <p class="lead">A focused beginner course for people who've never played — or have played casually and want proper technique. In four sessions you'll be playing real matches.</p>
-    <a href="#enroll" class="btn btn-primary">Find Your Course</a>
+
+    <!-- Early Bird Banner -->
+    <div id="early-bird" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,200,80,0.6);border-radius:12px;padding:14px 20px;margin:20px auto 22px;max-width:480px;text-align:center;backdrop-filter:blur(6px)">
+      <div style="color:#ffd060;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">⚡ Early Bird Price</div>
+      <div style="color:#fff;font-size:1rem;margin-bottom:10px">
+        <span style="text-decoration:line-through;opacity:.6;margin-right:8px">€200</span>
+        <span style="font-size:1.4rem;font-weight:800;color:#ffd060">€160</span>
+        <span style="opacity:.7;font-size:.85rem;margin-left:6px">· Save €40</span>
+      </div>
+      <div style="display:flex;justify-content:center;gap:10px" id="countdown">
+        <div style="text-align:center"><div id="cd-d" style="font-size:1.6rem;font-weight:800;color:#fff;line-height:1">--</div><div style="font-size:.65rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em">Days</div></div>
+        <div style="font-size:1.4rem;color:rgba(255,255,255,.5);align-self:flex-start;padding-top:2px">:</div>
+        <div style="text-align:center"><div id="cd-h" style="font-size:1.6rem;font-weight:800;color:#fff;line-height:1">--</div><div style="font-size:.65rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em">Hrs</div></div>
+        <div style="font-size:1.4rem;color:rgba(255,255,255,.5);align-self:flex-start;padding-top:2px">:</div>
+        <div style="text-align:center"><div id="cd-m" style="font-size:1.6rem;font-weight:800;color:#fff;line-height:1">--</div><div style="font-size:.65rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em">Min</div></div>
+        <div style="font-size:1.4rem;color:rgba(255,255,255,.5);align-self:flex-start;padding-top:2px">:</div>
+        <div style="text-align:center"><div id="cd-s" style="font-size:1.6rem;font-weight:800;color:#fff;line-height:1">--</div><div style="font-size:.65rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.06em">Sec</div></div>
+      </div>
+    </div>
+
+    <a href="#enroll" class="btn btn-primary">Enroll at €160 →</a>
   </div>
 </section>
+
+<script>
+(function() {
+  // Set deadline to 4 days from first visit, stored in localStorage
+  var key = 'kickstart_eb_deadline';
+  var deadline = localStorage.getItem(key);
+  if (!deadline) {
+    deadline = Date.now() + 4 * 24 * 60 * 60 * 1000;
+    localStorage.setItem(key, deadline);
+  }
+  deadline = parseInt(deadline);
+
+  function tick() {
+    var diff = deadline - Date.now();
+    var eb = document.getElementById('early-bird');
+    if (diff <= 0) {
+      if (eb) eb.style.display = 'none';
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    setTimeout(tick, 1000);
+  }
+  tick();
+})();
+</script>
 
 <section class="section intro">
   <div class="wrap">
